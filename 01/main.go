@@ -32,10 +32,8 @@ func main() {
 		number, _ := strconv.Atoi(strNumber)
 		total1 += number
 
-		n1, n2 := findLiteralsNumber(str)
-		toBeConverted := fmt.Sprintf("%v%v", n1, n2)
-		newNumber, _ := strconv.Atoi(toBeConverted)
-		fmt.Println(newNumber)
+		newStrNumber := findLiteralsNumber(str)
+		newNumber, _ := strconv.Atoi(newStrNumber)
 		total2 += newNumber
 	}
 	fmt.Printf("Total for problem 1: %v\n", total1)
@@ -63,10 +61,10 @@ func findNumbers(str string) (out string) {
 	return
 }
 
-func findLiteralsNumber(str string) (n1, n2 string) {
+func findLiteralsNumber(str string) (out string) {
 	var i1, i3 = 500, 500
 	var i2, i4 = -1, -1
-	var n3, n4 string
+	var n1, n2, n3, n4 string
 
 	for k := range numMap {
 		numFirstIndex := strings.Index(str, k)
@@ -101,5 +99,8 @@ func findLiteralsNumber(str string) (n1, n2 string) {
 	if i4 > i2 {
 		n2 = n4
 	}
+
+	out = fmt.Sprintf("%v%v", n1, n2)
+
 	return
 }
